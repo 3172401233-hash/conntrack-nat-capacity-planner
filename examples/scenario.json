@@ -1,0 +1,27 @@
+{
+  "safety_margin": 0.25,
+  "timeouts": {
+    "tcp_established": 7440,
+    "tcp_time_wait": 60,
+    "tcp_close": 10,
+    "udp": 30,
+    "reuse_safe_wait": 30
+  },
+  "addresses": [
+    {"ip": "203.0.113.1", "port_ranges": [[1024, 2048]], "reserved_ports": [1024, 1025]},
+    {"ip": "203.0.113.2", "port_ranges": [[1024, 2048]], "reserved_ports": []}
+  ],
+  "upstream_addresses": [
+    {"ip": "198.51.100.1", "port_ranges": [[4096, 8192]], "reserved_ports": []}
+  ],
+  "static_mappings": [
+    {"public_ip": "203.0.113.1", "public_port": 8080, "internal_ip": "10.0.0.10", "internal_port": 80, "protocol": "tcp"}
+  ],
+  "connections": [
+    {"conn_id": "c1", "protocol": "tcp", "src_ip": "10.0.0.1", "src_port": 50001, "dst_ip": "93.184.216.34", "dst_port": 443, "state": "established", "start": 0, "duration": 120},
+    {"conn_id": "c2", "protocol": "tcp", "src_ip": "10.0.0.2", "src_port": 50002, "dst_ip": "93.184.216.34", "dst_port": 443, "state": "established", "start": 10, "duration": 60},
+    {"conn_id": "c3", "protocol": "udp", "src_ip": "10.0.0.3", "src_port": 5300, "dst_ip": "8.8.8.8", "dst_port": 53, "start": 5, "duration": 300},
+    {"conn_id": "c4", "protocol": "tcp", "src_ip": "10.0.0.4", "src_port": 50004, "dst_ip": "203.0.113.1", "dst_port": 8080, "state": "established", "start": 20, "duration": 30, "hairpin": true},
+    {"conn_id": "c5", "protocol": "tcp", "src_ip": "10.0.0.5", "src_port": 50005, "dst_ip": "93.184.216.34", "dst_port": 80, "state": "time_wait", "start": 0, "duration": 45}
+  ]
+}
